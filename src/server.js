@@ -8,6 +8,8 @@ const server = express();
 console.log(pages)
 
 server
+// Use body from req
+  .use(express.urlencoded({extended: true}))
 // Static files
   .use(express.static('public'))
 
@@ -21,6 +23,7 @@ server
   .get('/orphanage', pages.orphanage)
   .get('/orphanages', pages.orphanages)
   .get('/create-orphanage', pages.createOrphanage)
+  .post('/save-orphanage', pages.saveOrphanage)
 
 // Start server
 server.listen(3000)
